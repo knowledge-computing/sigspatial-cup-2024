@@ -12,7 +12,7 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
 
 - Code
 
-  - Input
+  - Input Parameters
 
   - Output
 
@@ -25,7 +25,7 @@ We contextualize regions using one of the spatial language models, [SpaBERT](htt
 
 - Code `python ./src/train_predict_ev_count.py`
 
-  - Input
+  - Input Parameters
     - Overture Maps data in North Carolina and Georgia
       `./data/overturemap_{STATE_NAME}_{place/infrastructure}.csv`
 
@@ -44,7 +44,7 @@ We contextualize regions using one of the spatial language models, [SpaBERT](htt
 
 ### Usage
 - Code
-  - Input
+  - Input Parameters
   - Output
     - Estimated EV demand per census block in Georgia
       `./data/output/ev_demand.csv`
@@ -60,14 +60,11 @@ We assign EV charging station locations based on estimated demand and a ranked l
 
 - Code `python ./src/assign_ev_station.py`
 
-  - Input
-    - Estimated EV demand per census block in Georgia
+  - Input Parameters
+    - `input_ev_demand_path` Estimated EV demand per census block in Georgia
       `./data/output/ev_demand.csv`
 
-    - Existing EV charging stations in Georgia
-      `./data/ev_stations_georgia.csv`
-
-    - Filtered Overture Maps data in Georgia
+    - `input_potential_ev_station_path` Filtered Overture Maps data in Georgia and existing EV charging stations
       `./data/overturemap_georgia_potential_ev_stations.csv`
 
   - Output
@@ -81,5 +78,5 @@ We assign EV charging station locations based on estimated demand and a ranked l
 
 ### Usage
 - Code
-  - Input
+  - Input Parameters
   - Output

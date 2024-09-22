@@ -27,7 +27,7 @@ We contextualize regions using one of the spatial language models, [SpaBERT](htt
 
   - Input Arguments
     - Overture Maps data in North Carolina and Georgia
-      `./data/overturemap_{STATE_NAME}_{place/infrastructure}.csv`
+      `./data/overturemap_{georgia/north_carolina}_{place/infrastructure}.csv`
 
     - SpaBERT's pretrained weights using North Carolina data
       `./poi_contextual/weights`

@@ -57,16 +57,20 @@ We assign EV charging station locations based on estimated demand and a ranked l
 
 ### Usage
 
+- `python ./src/assign_ev_station.py` --input_ev_demand_path <path_to_ev_demand_file> --input_poi_path <path_to_potential_ev_charging_station_file>
 
-- Code `python ./src/assign_ev_station.py` --input_ev_demand_path <path_to_ev_demand_file> --input_poi_path <path_to_potential_ev_charging_station_file>
-
-  - Input Arguments
+  - Arguments
     - `input_ev_demand_path`: Estimated EV demand per census block in Georgia `./data/output/ev_demand.csv`
 
-    - `input_poi_path`: Filtered Overture Maps data in Georgia and existing EV charging stations `./data/overturemap_georgia_potential_ev_stations.csv`
+    - `input_poi_path`: Filtered Overture Maps data in Georgia `./data/overturemap_georgia_potential_ev_stations.csv`
 
-  - Output
-    - Assigned EV charging stations (GPKG format) `./data/output/ev_charging_stations_UMN_UL.gpkg`
+    - `input_ev_station_path`: Existing EV charging stations  in Georgia `./data/overturemap_georgia_potential_ev_stations.csv`
+
+    - `input_census_block_shp_path`: Census blocks in Georgia `./data/cb_2018_13_bg_500k`
+
+    - `output_gpkg`: Assigned EV charging stations (GPKG format) `./data/output/ev_charging_stations_UMN_UL.gpkg`
+
+    - `output_ev_demand_assigned`: Updated EV demand per census file with assigned station count `./data/output/ev_demand_assigned.csv`
 
 
 ## 5. Adjusting EV charging stations for disadvantaged communities

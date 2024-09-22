@@ -6,26 +6,81 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
 
 ## 1.
 
+### Description
+
+### Usage
+- Input
+
+- Code
+
+- Output
+
 
 ## 2. Learning region embeddings to predict EV registration rate for each census block
 ### Description
 We contextualize regions using one of the spatial language models, [SpaBERT](https://github.com/knowledge-computing/spabert). We use publicly available open map data, [Overture Maps](https://overturemaps.org/), to retrieve points of interest (POI) and infrastructure data for North Carolina and Georgia.
 
 ### Usage
-- Directories
-  - Overture Maps data for North Carolina and Georgia
-    `./data/overturemap_{STATE_NAME}_{place/infrastructure}`
+- Input
+  - Overture Maps data in North Carolina and Georgia
+    `./data/overturemap_{STATE_NAME}_{place/infrastructure}.csv`
 
   - SpaBERT's pretrained weights using North Carolina data
-    `./weights`
+    `./poi_contextual/weights`
+
+  - Learned region embeddings for each zip code in North Carolina and census block in Georgia
+    `./poi_contextual/embeddings`
     
-- Code
+- Code `python ./src/train_predict_ev_count.py`
+
+- Output
+  - Prediction results of EV count for each census block in Georgia
 
 
 ## 3.
 
+### Description
 
-## 4.
+### Usage
+- Input
+
+- Code
+
+- Output
+  - Estimated EV demand per census block in Georgia
+    `./data/output/ev_demand.csv`
 
 
-## 5.
+## 4. Assigning EV charging stations based on demand for each census block
+
+### Description
+We assign EV charging station locations based on estimated demand and a ranked list of relevant POI types, ordered as follows: `EV stations, Parking, Shopping Centers, Offices, Institutes, Hotels, Parks, Restaurants, Companies, Museums, and Golf Courses` EV charging stations are categorized into three capacity levels—1, 4, and 8—based on EV demand quantiles: 50%, 60%-80%, and 90%, respectively. 
+
+### Usage
+- Input
+  - Estimated EV demand per census block in Georgia
+    `./data/output/ev_demand.csv`
+
+  - Existing EV charging stations in Georgia
+    `./data/ev_stations_georgia.csv`
+
+  - Filtered Overture Maps data in Georgia
+    `./data/overturemap_georgia_potential_ev_stations.csv`
+
+- Code `python ./src/assign_ev_station.py`
+
+- Output
+  - Assigned EV charging stations (GPKG format)
+    `./data/output/ev_charging_stations_UMN_UL.gpkg`
+
+
+## 5. Adjusting EV charging stations for disadvantaged communities
+
+### Description
+
+### Usage
+- Input
+
+- Code
+
+- Output

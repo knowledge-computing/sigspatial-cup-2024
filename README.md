@@ -9,7 +9,7 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
 
 ## 2. Learning region embeddings to predict EV registration rate for each census block
 ### Description
-We contextualize regions using one of the spatial language models [SpaBERT](https://github.com/knowledge-computing/spabert). We use publicly available open map data, [Overture Maps](https://overturemaps.org/), to retrieve points of interest (POI) and infrastructure data for North Carolina and Georgia.
+We contextualize regions using one of the spatial language models, [SpaBERT](https://github.com/knowledge-computing/spabert). We use publicly available open map data, [Overture Maps](https://overturemaps.org/), to retrieve points of interest (POI) and infrastructure data for North Carolina and Georgia.
 
 ### Usage
 - Directories

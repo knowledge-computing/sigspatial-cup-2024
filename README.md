@@ -64,7 +64,7 @@ We assign EV charging station locations based on estimated demand and a ranked l
 
     - `input_poi_path`: Filtered Overture Maps data in Georgia `./data/overturemap_georgia_potential_ev_stations.csv`
 
-    - `input_ev_station_path`: Existing EV charging stations  in Georgia `./data/overturemap_georgia_potential_ev_stations.csv`
+    - `input_ev_station_path`: Existing EV charging stations  in Georgia `./data/georgia_ev_stations.csv`
 
     - `input_census_block_shp_path`: Census blocks in Georgia `./data/cb_2018_13_bg_500k`
 

@@ -12,7 +12,7 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
 
 - Code
 
-  - Input Parameters
+  - Input Arguments
 
   - Output
 
@@ -25,7 +25,7 @@ We contextualize regions using one of the spatial language models, [SpaBERT](htt
 
 - Code `python ./src/train_predict_ev_count.py`
 
-  - Input Parameters
+  - Input Arguments
     - Overture Maps data in North Carolina and Georgia
       `./data/overturemap_{STATE_NAME}_{place/infrastructure}.csv`
 
@@ -44,7 +44,7 @@ We contextualize regions using one of the spatial language models, [SpaBERT](htt
 
 ### Usage
 - Code
-  - Input Parameters
+  - Input Arguments
   - Output
     - Estimated EV demand per census block in Georgia
       `./data/output/ev_demand.csv`
@@ -58,18 +58,15 @@ We assign EV charging station locations based on estimated demand and a ranked l
 ### Usage
 
 
-- Code `python ./src/assign_ev_station.py`
+- Code `python ./src/assign_ev_station.py` --input_ev_demand_path <path_to_ev_demand_file> --input_poi_path <path_to_potential_ev_charging_station_file>
 
-  - Input Parameters
-    - `input_ev_demand_path` Estimated EV demand per census block in Georgia
-      `./data/output/ev_demand.csv`
+  - Input Arguments
+    - `input_ev_demand_path`: Estimated EV demand per census block in Georgia `./data/output/ev_demand.csv`
 
-    - `input_potential_ev_station_path` Filtered Overture Maps data in Georgia and existing EV charging stations
-      `./data/overturemap_georgia_potential_ev_stations.csv`
+    - `input_poi_path`: Filtered Overture Maps data in Georgia and existing EV charging stations `./data/overturemap_georgia_potential_ev_stations.csv`
 
   - Output
-    - Assigned EV charging stations (GPKG format)
-      `./data/output/ev_charging_stations_UMN_UL.gpkg`
+    - Assigned EV charging stations (GPKG format) `./data/output/ev_charging_stations_UMN_UL.gpkg`
 
 
 ## 5. Adjusting EV charging stations for disadvantaged communities
@@ -78,5 +75,5 @@ We assign EV charging station locations based on estimated demand and a ranked l
 
 ### Usage
 - Code
-  - Input Parameters
+  - Input Arguments
   - Output

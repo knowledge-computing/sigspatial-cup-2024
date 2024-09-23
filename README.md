@@ -5,7 +5,7 @@ The code for the 13th SIGSPATIAL Cup competition (GISCUP 2024) [https://sigspati
 The goal is to optimize the placement of EV charging stations. Our UMN-UL team proposes an approach that analyzes traffic demands and leverages point-of-interest contextual embeddings using a language model to predict EV registration rates per census block. 
 
 
-## 0. Downloading publicly available datasets
+## 0. Downloading provided datasets from GISCUP and publicly available dataset
 - Datasets
   - Census block shapefile for Georgia (GA)
   `./data/GA_cb_2018_13_bg_500k`
@@ -14,7 +14,7 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
   - Justice 40 shapefile for GA
   `./data/Georgia-Justice40-map`
   - Existing charging stations for GA
-  `./data/ev_stations_georgia.csv`
+  `./data/georgia_ev_stations.csv`
 
 
 ## 1. Learning region embeddings to predict EV registration rate for each census block
@@ -68,7 +68,7 @@ We assign EV charging station locations based on estimated demand and a ranked l
 
     - `input_ev_station_path`: Existing EV charging stations in GA `./data/georgia_ev_stations.csv`
 
-    - `input_census_block_shp_path`: Census blocks in GA `./data/cb_2018_13_bg_500k`
+    - `input_census_block_shp_path`: Census blocks in GA `./data/GA_cb_2018_13_bg_500k`
 
     - `output_gpkg`: Assigned EV charging stations (GPKG format) `./data/output/ev_charging_stations_UMN_UL.gpkg`
 

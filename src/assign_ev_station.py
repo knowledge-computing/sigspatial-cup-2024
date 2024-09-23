@@ -8,9 +8,9 @@ from shapely import wkt
 
 def convert_to_point(geometry):
     if geometry.geom_type == 'Polygon':
-        return geometry.centroid  # Convert Polygon to its centroid
+        return geometry.centroid
     elif geometry.geom_type == 'LineString':
-        return geometry.interpolate(0.5, normalized=True)  # Convert LineString to midpoint
+        return geometry.interpolate(0.5, normalized=True)
     else:
         return geometry 
 
@@ -88,7 +88,7 @@ def main():
     parser.add_argument('--input_ev_demand_path', type=str, default='./data/output/ev_demand.csv', help='Path to EV demand file')
     parser.add_argument('--input_poi_path', type=str, default='./data/overturemap_georgia_potential_ev_stations.csv', help='Path to POI file')
     parser.add_argument('--input_ev_station_path', type=str, default='./data/georgia_ev_stations.csv', help='Path to POI file')
-    parser.add_argument('--input_census_block_shp_path', type=str, default='./data/cb_2018_13_bg_500k', help='Path to POI file')
+    parser.add_argument('--input_census_block_shp_path', type=str, default='./data/GA_cb_2018_13_bg_500k', help='Path to POI file')
     
     parser.add_argument('--output_gpkg', type=str, default='./data/output/ev_charging_stations_UMN_UL.gpkg', help='Path to output GPKG')
     parser.add_argument('--output_ev_demand_assigned', type=str, default='./data/output/ev_demand_assigned.csv', help='Path to output GPKG')

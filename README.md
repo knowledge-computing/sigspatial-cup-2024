@@ -19,23 +19,21 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
 
 ## 1. Learning region embeddings to predict EV registration rate for each census block
 ### Description
-We contextualize regions using one of the spatial language models, [SpaBERT](https://github.com/knowledge-computing/spabert). We use publicly available open map data, [Overture Maps](https://overturemaps.org/), to retrieve points of interest (POI) and infrastructure data for NC and GA.
+
+We leverage a spatial language model, [SpaBERT](https://github.com/knowledge-computing/spabert), to learn and extract contextual region embeddings for NC zip code areas and GA census blocks. Next, we apply an autoencoder for dimensionality reduction of the extracted region embeddings and employ a multi-layer perceptron to train and predict the EV registration count for each area.
 
 ### Usage
 
-- Code `python ./src/train_predict_ev_count.py`
+- `python ./src/train_predict_ev_count.py`
 
-  - Input Arguments
-    - Overture Maps data in NC and GA
-      `./data/overturemap_{georgia/north_carolina}_{place/infrastructure}.csv`
+  - Arguments
+    - `input_nc_emb_path`: Learned region embeddings for NC zip code and EV registration count `./data/output/NC_EV_Registrations_ZIP_Count_embedding_autoenc_64.csv`
 
-    - SpaBERT's pretrained weights using NC data
-      `./poi_contextual/weights`
+    - `input_ga_emb_path`: Learned region embeddings for GA census block `./data/output/georgia_place_infrastructure_emb_zip_code_avg_enc64.csv`
 
-    - Learned region embeddings for each zip code in NC and census block in GA
-      `./poi_contextual/embeddings`
-  - Output
-    - Prediction results of EV count for each census block in GA
+    - `input_census_block_shp_path`: Census blocks in GA `./data/GA_cb_2018_13_bg_500k`
+
+    - `output_csv`: Predicted EV registration count per GA census block `./data/output/georgia_place_infrastructure_emb_zip_code_avg_enc64_predicted_ev.csv`
 
 
 ## 2. Predicting EV charging demand at the census block for GA
@@ -59,7 +57,7 @@ We assign EV charging station locations based on estimated demand and a ranked l
 
 ### Usage
 
-- `python ./src/assign_ev_station.py` --input_ev_demand_path <path_to_ev_demand_file> --input_poi_path <path_to_potential_ev_charging_station_file>
+- `python ./src/assign_ev_station.py`
 
   - Arguments
     - `input_ev_demand_path`: Estimated EV demand per census block in GA `./data/output/ev_demand.csv`

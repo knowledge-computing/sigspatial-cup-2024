@@ -20,7 +20,7 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
 ## 1. Learning region embeddings to predict EV registration rate for each census block
 ### Description
 
-We leverage a spatial language model, [SpaBERT](https://github.com/knowledge-computing/spabert), to learn and extract contextual region embeddings for NC zip code areas and GA census blocks. Next, we apply an autoencoder for dimensionality reduction of the extracted region embeddings and employ a multi-layer perceptron to train and predict the EV registration count for each area.
+We leverage a spatial language model, [SpaBERT](https://github.com/knowledge-computing/spabert), to learn and extract contextual region embeddings for NC zip code areas and GA census blocks. Next, we apply an autoencoder for dimensionality reduction of the extracted region embeddings and employ a multi-layer perceptron to train and predict the EV registration count for each region.
 
 ### Usage
 

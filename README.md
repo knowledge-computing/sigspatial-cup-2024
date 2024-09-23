@@ -5,7 +5,7 @@ The code for the 13th SIGSPATIAL Cup competition (GISCUP 2024) [https://sigspati
 The goal is to optimize the placement of EV charging stations. Our UMN-UL team proposes an approach that analyzes traffic demands and leverages point-of-interest contextual embeddings using a language model to predict EV registration rates per census block. 
 
 
-## 0. Preparing publicly available and provided datasets
+## 1. Preparing publicly available and provided datasets
 - Datasets
   - Census block shapefile for Georgia (GA)
   `./data/GA_cb_2018_13_bg_500k`
@@ -17,7 +17,7 @@ The goal is to optimize the placement of EV charging stations. Our UMN-UL team p
   `./data/georgia_ev_stations.csv`
 
 
-## 1. Learning region embeddings to predict EV registration rate for each census block
+## 2. Learning region embeddings to predict EV registration rate for each census block
 ### Description
 
 We leverage a spatial language model, [SpaBERT](https://github.com/knowledge-computing/spabert), to learn and extract contextual region embeddings for NC zip code areas and GA census blocks. Next, we apply an autoencoder for dimensionality reduction of the extracted region embeddings and employ a multi-layer perceptron to train and predict the EV registration count for each region.
@@ -36,7 +36,7 @@ We leverage a spatial language model, [SpaBERT](https://github.com/knowledge-com
     - `output_csv`: Predicted EV registration count per GA census block `./data/output/georgia_place_infrastructure_emb_zip_code_avg_enc64_predicted_ev.csv`
 
 
-## 2. Predicting EV charging demand at the census block for GA
+## 3. Predicting EV charging demand at the census block for GA
 
 ### Description
 We use the OD matrix from GA DOT to estimate the EV charging demand per census block. Based on the EV registration estimated from step 2, we know how many EV trips originated from each census block. Then we proportionally assign those EV trips according to the trip distribution from the OD matrix. Since the OD matrix is sparse, we only keep top 5 destinations with the most trips per origin. At last, the EV charging demand is the maximum of the EV registration number and the EV trips, considering the charging needs for both home and travel.  
@@ -50,7 +50,7 @@ We use the OD matrix from GA DOT to estimate the EV charging demand per census b
     - Estimated EV demand per census block in GA `./data/output/ev_demand.csv`
 
 
-## 3. Assigning EV charging stations based on demand for each census block
+## 4. Assigning EV charging stations based on demand for each census block
 
 ### Description
 We assign EV charging station locations based on estimated demand and a ranked list of relevant POI types, ordered as follows: `EV stations, Parking, Shopping Centers, Offices, Institutes, Hotels, Parks, Restaurants, Companies, Museums, and Golf Courses` EV charging stations are categorized into three capacity levels—1, 4, and 8—based on EV demand quantiles: 50%, 60%-80%, and 90%, respectively. 
@@ -73,7 +73,7 @@ We assign EV charging station locations based on estimated demand and a ranked l
     - `output_ev_demand_assigned`: Updated EV demand per census file with assigned station count `./data/output/ev_demand_assigned.csv`
 
 
-## 4. Adjusting EV charging stations for disadvantaged communities
+## 5. Adjusting EV charging stations for disadvantaged communities
 
 ### Description
 We estimate the charging station distributions between disadvantaged communities (DACs) and non-disadvantaged communities (Non-DACs) according to the definition of Justice40. 
